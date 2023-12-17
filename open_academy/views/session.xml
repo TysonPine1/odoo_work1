@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="action_session">
+        <field name="name">Sessions</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">openacademy.session</field>
+        <field name="view_mode">tree,form,calendar,graph,kanban,pivot</field>
+        <field name="help" type="html">
+            <p class="ic_view_session">Create new session</p>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_form">
+        <field name="name">session.form</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="session_name" string="Session name"/>
+                            <field name="start_date" string="Start date and time"/>
+                            <field name="instructor" string="Instructor" domain="[('instructor','=',True)]"/>
+                            <field name="active" string="Active"/>
+                        </group>
+                        <group>
+                            <field name="attendees" string="Attendees" widget="many2many_tags"/>
+                            <field name="seat" string="Seats"/>
+                            <field name="booked_seat" string="Booked seats"/>
+                            <field name="participants" string="Participants"/>
+                            <field name="percentage_of_taken_seat" string="Percentage of taken seats" widget="progressbar"/>
+                        </group>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Description">
+                            <field name="description_S" placeholder="Description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_tree">
+        <field name="name">session.tree</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="session_name" string="Sessions" />
+                <field name="start_date" string="Start date"/>
+                <field name="instructor" string="Instructor" domain="[('instructor','=',True)]"/>
+                <field name="seat" string="Seats"/>
+                <field name="booked_seat" string="Booked seats"/>
+                <field name="percentage_of_taken_seat" string="Percentage of taken seats" widget="progressbar"/>
+                <!-- <field name="duration" widget="integer" options="{'color': 'blue: [\'&lt;\', 5], red: [\'&gt;\', 15]'}"/> -->
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_search">
+        <field name="name">session.search</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <search string="Search sessions">
+                <field name="session_name"/>
+                <field name="start_date"/>
+                <!-- <filter string="My course" name="filter_my_courses" domain="[('responsible', '=', uid)]" context="{'search_default_filter_my_courses': 1}"/>
+                <group expand="0" string="Group by">
+                    <filter string="Responsible" name="group_by_responsible" context="{'group_by': 'responsible_id'}"/>
+                </group> -->
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_calendar">
+        <field name="name">session.calendar</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <calendar string="Calendar" date_start="start_date">
+                <field name="session_name"/>
+                <field name="instructor"/>
+                <field name="active"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_kanban">
+        <field name="name">session.kanban</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="session_name"/>
+                <field name="instructor"/>
+                <field name="course" widget="many2one" options="{'no_create_edit': True}"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div t-attf-class="oe_kanban_details">
+                                <ul>
+                                    <li>
+                                        Session name: <field name="session_name"/>
+                                    </li>
+                                    <li>
+                                        Instructor: <field name="instructor"/>
+                                    </li>
+                                    <li>
+                                        Course: <field name="course"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="session_graph">
+        <field name="name">session.graph</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <calendar>
+                <field name="course" type="row"/>
+                <field name="attendees_count" type="measure"/>
+            </calendar>
+        </field>
+    </record>
+
+    <record id="session_pivot_view" model="ir.ui.view">
+        <field name="name">session.pivot</field>
+        <field name="model">openacademy.session</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="session_name"/>
+                <field name="start_date"/>
+            </pivot>
+        </field>
+    </record>
+
+    <menuitem id="menu_session" name="Sessions" action="action_session" parent="course_menu_master"/>
+
+    <!-- <menuitem id="menu_create_attendee_wizard" name="Create attendee" parent="course_menu_master" action="action_attendee_create_wizard" sequence="10"/> -->
+
+</odoo>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="action_course">
+        <field name="name">Course</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">openacademy.course</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="ic_view_course">Create new course</p>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="course_form">
+        <field name="name">course.form</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="courses" string="Course"/>
+                            <field name="course_duration" string="Duration"/>
+                            <field name="instructor" string="Instructor"/>
+                        </group>
+                        <group>
+                            <field name="is_instructor" string="Instructor"/>
+                            <field name="organizer" string="Organizer"/>
+                            <field name="session_id" string="Sessions"/>
+                            <button name="action_wizard" string="To wizard" type="object" class="oe_highlight"/> 
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Description">
+                                <field name="description" placeholder="Description"/>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="course_tree">
+        <field name="name">course.tree</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="courses" string="Courses"/>
+                <field name="instructor" string="Instructor"/>
+                <field name="organizer" string="Organizer"/>
+                <field name="course_duration" string="Duration"/>
+                <field name="is_instructor" string="Instructor"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="course_search">
+        <field name="name">course.search</field>
+        <field name="model">openacademy.course</field>
+        <field name="arch" type="xml">
+            <search string="Search courses">
+                <field name="courses"/>
+                <field name="instructor"/>
+            </search>
+        </field>
+    </record>
+        <menuitem id="course_menu_root" name="Open Academy" sequence="0" web_icon="open_academy,static\description\icon.png"/>
+
+        <menuitem id="course_menu_master" name="Courses" parent="course_menu_root" action="action_course"/>
+
+    </odoo>

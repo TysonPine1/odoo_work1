@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.module.category" id="base.module_category_open_academy_session">
+        <field name="description">Helps you handle your estate.</field>
+        <field name="sequence">7</field>
+    </record>
+    <record id="group_openacademy_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id" ref="base.module_category_open_academy_session" />
+    </record>
+
+    <record id="group_openacademy_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id" ref="base.module_category_open_academy_session"/>
+    </record>
+
+    <record id="record_rule_course_group_manager" model="ir.rule">
+        <field name="name">Course manager rule</field>
+        <field name="model_id" ref="model_openacademy_course"/>
+        <field name="groups" eval="[(4, ref('open_academy.group_openacademy_manager'))]"/>
+        <field name="domain_force">['|',('responsible','=',False),('responsible', '=', user.id )]</field>
+        <!-- <field name="perm_unlink" eval="False"/>
+        <field name="perm_write" eval="False"/> -->
+    </record>
+
+</odoo>

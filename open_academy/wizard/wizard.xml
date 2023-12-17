@@ -1,0 +1,31 @@
+<odoo>
+    <record id="view_wizard_form" model="ir.ui.view">
+        <field name="name">create.wizard.form</field>
+        <field name="model">create.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="session_id" string="Session"/>
+                            <field name="partner_id" string="Partner" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="date" string="Date"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_attendee_create_wizard" model="ir.actions.act_window">
+        <field name="name">Create Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

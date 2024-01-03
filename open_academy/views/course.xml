@@ -68,5 +68,4 @@
         <menuitem id="course_menu_root" name="Open Academy" sequence="0" web_icon="open_academy,static\description\icon.png"/>
 
         <menuitem id="course_menu_master" name="Courses" parent="course_menu_root" action="action_course"/>
-
     </odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <report id="action_report_wiz"
+        string="Action Report Wizard"
+        model="create.wizard"
+        report_type="qweb-pdf"
+        file="open_academy.report_wiz_template"
+        name="open_academy.report_wiz_template"/>
+</odoo>

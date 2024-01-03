@@ -13,6 +13,11 @@
                         <group>
                             <field name="date" string="Date"/>
                         </group>
+                        <footer>
+                            <button name="action_wizport" string="Print" type="object" class="oe_highlight"/>
+                            <!-- <button name="action_excel_wizport" string="P-Excel" type="object" class="oe_highlight"/> -->
+                            <button name="cancel_wiz" string="Cancel" class="oe_highlight" special="cancel"/>
+                        </footer>
                     </group>
                 </sheet>
             </form>
@@ -27,5 +32,7 @@
         <field name="view_id" ref="view_wizard_form"/>
         <field name="target">new</field>
     </record>
+
+    <menuitem id="session_wizport" name="Report" parent="course_menu_root" action="action_attendee_create_wizard"/>
 
 </odoo>

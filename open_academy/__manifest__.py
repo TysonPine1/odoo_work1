@@ -3,7 +3,7 @@
     'version': '13.0',
     'summary': 'Manage academy',
     'sequence': 1,
-    'depends': ['mail', 'base', 'board', 'web'],
+    'depends': ['mail', 'base', 'board', 'web', 'report_xlsx'],
     'category': 'Open Academy/Session',
     'license': 'AGPL-3',
     'author': 'Heinrich von Helmholtz',

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record model="ir.actions.act_window" id="action_exmp">
+        <field name="name">Session</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">experiment.exmp</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="ic_view_session">Create new session</p>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="experiment_form">
+        <field name="name">experiment.form</field>
+        <field name="model">experiment.exmp</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="session_id" string="Session"/>
+                            <field name="attendees" string="Attendees" widget="many2many_tags"/>
+                            <field name="date" string="Date"/>
+                        </group>
+                        <notebook colspan="4">
+                            <page string="Description">
+                                <field name="description" placeholder="Description"/>
+                            </page>
+                        </notebook>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="experiment_tree">
+        <field name="name">experiment.tree</field>
+        <field name="model">experiment.exmp</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="session_id" string="Sessions"/>
+                <field name="date" string="Date"/>
+                <field name="attendees" string="Attendees" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="experiment_search">
+        <field name="name">experiment.exmp</field>
+        <field name="model">experiment.exmp</field>
+        <field name="arch" type="xml">
+            <search string="Search Sessions">
+                <field name="session_id"/>
+                <field name="date"/>
+            </search>
+        </field>
+    </record>
+        <menuitem id="experiment_menu_root" name="Experiments" sequence="0"/>
+
+        <menuitem id="experiment_menu_master" name="Experiment Master" parent="experiment_menu_root" action="action_exmp"/>
+    </odoo>

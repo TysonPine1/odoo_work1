@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_wizard_form" model="ir.ui.view">
+        <field name="name">wizard.experiment</field>
+        <field name="model">wizard.exmp</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="session_id" string="Session"/>
+                            <field name="attendees" string="Attendees" widget="many2many_tags"/>
+                            <field name="date" string="Date"/>
+                        </group>
+                        <footer>
+                            <button name="action_pdf" string="P-pdf" type="object" class="oe_highlight"/>
+                            <button name="action_excel" string="P-excel" type="object" class="oe_highlight"/>
+                            <button name="cancel_pdf" string="Cancel" class="oe_highlight" special="cancel"/>
+                        </footer>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_experiment_exmp_wiz" model="ir.actions.act_window">
+        <field name="name">Create Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">wizard.exmp</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="session_exmp" name="Reports" parent="experiment_menu_root" action="action_experiment_exmp_wiz"/>
+
+</odoo>

@@ -15,7 +15,7 @@
                         </group>
                         <footer>
                             <button name="action_wizport" string="Print" type="object" class="oe_highlight"/>
-                            <!-- <button name="action_excel_wizport" string="P-Excel" type="object" class="oe_highlight"/> -->
+                            <button name="action_excel_wizport" string="P-Excel" type="object" class="oe_highlight"/>
                             <button name="cancel_wiz" string="Cancel" class="oe_highlight" special="cancel"/>
                         </footer>
                     </group>

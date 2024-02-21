@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_purchase_form_wpinherit" model="ir.ui.view">
+        <field name="name">purchase.order.wpinherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+        <xpath expr="//header/button[@name='button_done']" position="after">
+            <button name="action_wp_filter" string="POWiz" class="oe_highlight" type="object" groups="Inherit_WP1.group_purchase_order_wizard"/> 
+        </xpath>
+        <xpath expr="//field[@name='date_approve']" position="after">
+                <group>
+                    <field name="order_type"/>
+                    <field name="driver_name"/>
+                    <field name="vehicles"/>
+                    <field name="location_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_stock_picking_form_wpinherit" model="ir.ui.view">
+        <field name="name">stock.picking.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='origin']" position="after">
+                <group>
+                    <group>
+                        <field name="order_type"/>
+                        <field name="driver_name"/>
+                        <field name="vehicles"/>
+                        <field name="location_id"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

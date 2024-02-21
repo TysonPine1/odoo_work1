@@ -6,4 +6,22 @@
         report_type="qweb-pdf"
         file="open_academy.report_wiz_template"
         name="open_academy.report_wiz_template"/>
+    <!-- !V1 initial -->
+    <!-- <report
+        id="report_excel"
+        string="Session Excel Report"
+        model="create.wizard"
+        report_type="xlsx"
+        name="open_academy.excel_report"
+        file="open_academy.excel_report"/> -->
+
+    <report
+        id="open_academy.report_excel"
+        string="Session Excel Report"
+        model="create.wizard"
+        report_type="xlsx"
+        name="open_academy.excel_report"
+        file="open_academy.excel_report"
+        attachment="True"
+    />
 </odoo>

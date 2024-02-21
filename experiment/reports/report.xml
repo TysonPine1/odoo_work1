@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <report 
+        id="action_exmp_pdf"
+        string = "PDF report"
+        model="wizard.exmp"
+        name = "experiment.exmp_pdf"
+        file = "experiment.exmp_pdf"
+        report_type = "qweb-pdf"
+    />
+</odoo>

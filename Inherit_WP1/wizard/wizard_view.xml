@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_powizard_form" model="ir.ui.view">
+        <field name="name">po.wizard.form</field>
+        <field name="model">po.inherit.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="purchase_order_ids"/>
+            </form>               
+            <footer>
+                <!-- <button name="process_order" string="Process Order" type="object" class="btn-primary"/> -->
+                <button string="Cancel" class="btn-secondary" special="cancel"/>
+            </footer>
+        </field>
+    </record>
+
+    <record id="action_powizard_form" model="ir.actions.act_window">
+        <field name="name">Filter Type</field>
+        <field name="res_model">po.inherit.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>    
+    </record>   
+
+</odoo>
